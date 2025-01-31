@@ -1,0 +1,51 @@
+<h2>Generar Reporte</h2>
+
+<form (ngSubmit)="generateReport()" class="report-form">
+  <label>Fecha Inicial:</label>
+  <input type="date" [(ngModel)]="report.initialDate" name="initialDate" required>
+
+  <label>Fecha Final:</label>
+  <input type="date" [(ngModel)]="report.endDate" name="endDate" required>
+
+  <label>Cliente:</label>
+  <select [(ngModel)]="report.customerId" name="customerId" required>
+    <option *ngFor="let customer of customers" [value]="customer.customerId">
+      {{ customer.name }}
+    </option>
+  </select>
+
+  <div class="form-buttons">
+    <button type="submit">Generar Reporte</button>
+  </div>
+</form>
+
+<h2>Resultados del Reporte</h2>
+<table *ngIf="reportData.length > 0">
+  <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Cliente</th>
+      <th>Número de Cuenta</th>
+      <th>Tipo de Cuenta</th>
+      <th>Saldo Inicial</th>
+      <th>Estado</th>
+      <th>Tipo de Transacción</th>
+      <th>Monto</th>
+      <th>Saldo Final</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let transaction of reportData">
+      <td>{{ transaction.date }}</td>
+      <td>{{ transaction.name }}</td>
+      <td>{{ transaction.accountNumber }}</td>
+      <td>{{ transaction.accountType }}</td>
+      <td>{{ transaction.initialBalance }}</td>
+      <td>{{ transaction.status }}</td>
+      <td>{{ transaction.transactionType }}</td>
+      <td>{{ transaction.amount }}</td>
+      <td>{{ transaction.balance }}</td>
+    </tr>
+  </tbody>
+</table>
+<button *ngIf="reportData.length > 0" type="button" (click)="downloadReport()">Descargar Reporte</button>
