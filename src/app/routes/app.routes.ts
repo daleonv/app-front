@@ -5,6 +5,7 @@ import { TransactionsComponent } from '../components/transactions/transactions.c
 import { ReportsComponent } from '../components/reports/reports.component';
 import { NgModule } from '@angular/core';
 import { ClientAddComponent } from '../components/clients/client-add/client-add.component';
+import { ClientEditComponent } from '../components/clients/client-edit/client-edit.component';
 
 export const routes: Routes = [
   { path: 'clients', component: ClientsComponent },
@@ -12,6 +13,7 @@ export const routes: Routes = [
   { path: 'transactions', component: TransactionsComponent },
   { path: 'reports', component: ReportsComponent },
   { path: 'client-add', component: ClientAddComponent },
+  { path: 'client-edit', component: ClientEditComponent },
   { path: '', redirectTo: '/clients', pathMatch: 'full' },
   { path: '**', redirectTo: '/clients' }
 ];

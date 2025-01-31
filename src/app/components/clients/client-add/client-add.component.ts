@@ -3,6 +3,7 @@ import { CustomerService } from '../../../services/customer.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Customer } from '../../../models/customer.model';
 
 @Component({
   selector: 'app-client-add',

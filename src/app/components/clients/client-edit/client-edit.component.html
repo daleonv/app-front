@@ -1,0 +1,35 @@
+<h2>Editar Cliente</h2>
+
+<form (ngSubmit)="saveChanges()" class="customer-form">
+  <label>Nombre:</label>
+  <input type="text" [(ngModel)]="customer.name" name="name" required>
+
+  <label>Género:</label>
+  <select [(ngModel)]="customer.gender" name="gender" required>
+    <option value="Hombre">Hombre</option>
+    <option value="Mujer">Mujer</option>
+  </select>
+
+  <label>Edad:</label>
+  <input type="number" [(ngModel)]="customer.age" name="age" required>
+
+  <label>Identificación:</label>
+  <input type="text" [(ngModel)]="customer.identification" name="identification" required readonly>
+
+  <label>Dirección:</label>
+  <input type="text" [(ngModel)]="customer.address" name="address" required>
+
+  <label>Teléfono:</label>
+  <input type="text" [(ngModel)]="customer.phone" name="phone" required>
+
+  <label>Estado:</label>
+  <select [(ngModel)]="customer.status" name="status" required>
+    <option value="Activo">Activo</option>
+    <option value="Inactivo">Inactivo</option>
+  </select>
+
+  <div class="form-buttons">
+    <button type="submit">Actualizar</button>
+    <button type="button" (click)="cancel()">Cancelar</button>
+  </div>
+</form>

@@ -32,5 +32,15 @@ export class ClientsComponent implements OnInit {
   goToAddClient(): void {
     this.router.navigate(['/client-add']);
   }
+
+  goToEditClient(customer: any): void {
+    this.router.navigate(['/client-edit', {data: customer.customerId}]);
+  }
   
+  deleteCustomer(customer: any) {
+    if (confirm(`¿Seguro que deseas eliminar a ${customer.name}?`)) {
+      this.customers = this.customers.filter(c => c !== customer);
+      console.log("Cliente eliminado:", customer);
+    }
+  }
 }

@@ -10,6 +10,7 @@
       <th>Dirección</th>
       <th>Teléfono</th>
       <th>Estado</th>
+      <th>Acciones</th>
     </tr>
   </thead>
   <tbody>
@@ -21,6 +22,10 @@
       <td>{{ customer.address }}</td>
       <td>{{ customer.phone }}</td>
       <td>{{ customer.status }}</td>
+      <td>
+        <button (click)="goToEditClient(customer)">Editar</button>
+        <button (click)="deleteCustomer(customer)">Eliminar</button>
+      </td>
     </tr>
   </tbody>
 </table>
