@@ -1,0 +1,26 @@
+<h2>Lista de Clientes</h2>
+<button (click)="goToAddClient()">Agregar Cliente</button>
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Género</th>
+      <th>Edad</th>
+      <th>Identificación</th>
+      <th>Dirección</th>
+      <th>Teléfono</th>
+      <th>Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let customer of customers">
+      <td>{{ customer.name }}</td>
+      <td>{{ customer.gender }}</td>
+      <td>{{ customer.age }}</td>
+      <td>{{ customer.identification }}</td>
+      <td>{{ customer.address }}</td>
+      <td>{{ customer.phone }}</td>
+      <td>{{ customer.status }}</td>
+    </tr>
+  </tbody>
+</table>

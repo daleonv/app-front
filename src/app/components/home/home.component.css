@@ -1,0 +1,54 @@
+/* Estilos generales */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif; /* Fuente simple */
+}
+
+/* Panel lateral simple */
+.left-panel {
+  width: 200px; /* Ancho del panel lateral */
+  height: 100vh; /* Altura completa de la ventana */
+  position: fixed; /* Fija el panel en su lugar */
+  top: 0;
+  left: 0;
+  padding: 20px; /* Espaciado interno */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  background-color: #f9f9f9; /* Fondo muy claro */
+}
+
+.left-panel ul {
+  list-style: none; /* Quita los puntos de la lista */
+  padding: 0;
+  margin: 0;
+}
+
+.left-panel ul li {
+  margin: 1rem 0; /* Espaciado entre elementos */
+}
+
+.left-panel ul li a {
+  color: #333; /* Color del texto oscuro */
+  text-decoration: none; /* Quita el subrayado de los enlaces */
+  font-size: 1rem; /* Tamaño de la fuente */
+  display: block; /* Hace que el enlace ocupe todo el espacio del li */
+  padding: 0.5rem 0; /* Espaciado interno */
+  text-align: left; /* Alineación del texto a la izquierda */
+}
+
+.left-panel ul li a:hover {
+  color: #000; /* Color más oscuro al hacer hover */
+}
+
+.left-panel ul li a.active {
+  font-weight: bold; /* Resalta el enlace activo con negrita */
+}
+
+/* Contenido principal */
+.content {
+  margin-left: 250px; /* Margen para no solaparse con el panel lateral */
+  padding: 20px;
+  background-color: #fff; /* Fondo blanco */
+  min-height: 100vh; /* Altura mínima para ocupar toda la pantalla */
+}

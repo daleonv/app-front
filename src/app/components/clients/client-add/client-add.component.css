@@ -1,0 +1,65 @@
+/* Estilos generales del formulario */
+.customer-form {
+    max-width: 600px; /* Ancho máximo del formulario */
+    margin: 20px auto; /* Centrar el formulario */
+    padding: 20px;
+    border: 1px solid #ccc; /* Borde sutil */
+    border-radius: 8px; /* Bordes redondeados */
+    background-color: #f9f9f9; /* Fondo claro */
+  }
+  
+  .customer-form label {
+    display: block; /* Cada label en una nueva línea */
+    
+    margin-bottom: 8px; /* Espaciado entre labels */
+    font-weight: bold; /* Texto en negrita */
+    color: #333; /* Color del texto */
+  }
+  
+  .customer-form input,
+  .customer-form select {
+    width: 100%; /* Ocupar todo el ancho disponible */
+    padding: 8px; /* Espaciado interno */
+    margin-bottom: 16px; /* Espaciado entre campos */
+    border: 1px solid #ccc; /* Borde sutil */
+    border-radius: 4px; /* Bordes redondeados */
+    font-size: 14px; /* Tamaño de la fuente */
+  }
+  
+  .customer-form input[readonly] {
+    background-color: #e9e9e9; /* Fondo gris para campos de solo lectura */
+    cursor: not-allowed; /* Cursor no permitido */
+  }
+  
+  /* Estilos para los botones */
+  .form-buttons {
+    display: flex; /* Alinear botones en línea */
+    justify-content: space-between; /* Espacio entre botones */
+    margin-top: 20px; /* Espaciado superior */
+  }
+  
+  .form-buttons button {
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
+    font-size: 14px; /* Tamaño de la fuente */
+    cursor: pointer; /* Cursor de tipo puntero */
+  }
+  
+  .form-buttons button[type="submit"] {
+    background-color: #28a745; /* Color verde para el botón Guardar */
+    color: white; /* Texto blanco */
+  }
+  
+  .form-buttons button[type="submit"]:hover {
+    background-color: #218838; /* Color verde oscuro al hacer hover */
+  }
+  
+  .form-buttons button[type="button"] {
+    background-color: #dc3545; /* Color rojo para el botón Cancelar */
+    color: white; /* Texto blanco */
+  }
+  
+  .form-buttons button[type="button"]:hover {
+    background-color: #c82333; /* Color rojo oscuro al hacer hover */
+  }

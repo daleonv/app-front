@@ -1,0 +1,35 @@
+<h2>Agregar Cliente</h2>
+
+<form (ngSubmit)="addCustomer()" class="customer-form">
+  <label>Nombre:</label>
+  <input type="text" [(ngModel)]="customer.name" name="name" required>
+
+  <label>Género:</label>
+  <select [(ngModel)]="customer.gender" name="gender" required>
+    <option value="Hombre">Hombre</option>
+    <option value="Mujer">Mujer</option>
+  </select>
+
+  <label>Edad:</label>
+  <input type="number" [(ngModel)]="customer.age" name="age" required>
+
+  <label>Identificación:</label>
+  <input type="text" [(ngModel)]="customer.identification" name="identification" required>
+
+  <label>Dirección:</label>
+  <input type="text" [(ngModel)]="customer.address" name="address" required>
+
+  <label>Teléfono:</label>
+  <input type="text" [(ngModel)]="customer.phone" name="phone" required>
+
+  <label>Contraseña:</label>
+  <input type="password" [(ngModel)]="customer.password" name="password" required>
+
+  <label>Estado:</label>
+  <input type="text" [(ngModel)]="customer.status" name="status" value="Activo" required readonly>
+
+  <div class="form-buttons">
+    <button type="submit">Guardar</button>
+    <button type="button" (click)="cancel()">Cancelar</button>
+  </div>
+</form>
