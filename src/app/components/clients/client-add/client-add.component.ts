@@ -3,7 +3,6 @@ import { CustomerService } from '../../../services/customer.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Customer } from '../../../models/customer.model';
 
 @Component({
   selector: 'app-client-add',
@@ -27,7 +26,6 @@ export class ClientAddComponent {
 constructor(private customerService: CustomerService, private router: Router) {}
 
 addCustomer(): void {
-  console.log("Cliente a enviar:", this.customer);
   this.customerService.addCustomer(this.customer).subscribe({
     next: response => {
       console.log('Cliente agregado:', response);
@@ -43,7 +41,4 @@ addCustomer(): void {
     this.router.navigate(['/clients']);
   }
 
-  testClick() {
-    console.log('¡Botón clickeado!');
-  }
 }

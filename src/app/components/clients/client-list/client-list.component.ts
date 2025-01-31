@@ -10,10 +10,10 @@ import { Router } from '@angular/router';
   templateUrl: './client-list.component.html',
   styleUrls: ['./client-list.component.css'],
 })
-export class ClientsComponent implements OnInit {
+export class ClientsListComponent implements OnInit {
   customers: any[] = [];
 
-  constructor(private customerService: CustomerService, private router: Router) {}
+  constructor(private customerService: CustomerService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadCustomers();
@@ -34,13 +34,21 @@ export class ClientsComponent implements OnInit {
   }
 
   goToEditClient(customer: any): void {
-    this.router.navigate(['/client-edit', {data: customer.customerId}]);
+    this.router.navigate(['/client-edit', { data: customer.customerId }]);
   }
-  
-  deleteCustomer(customer: any) {
+
+  deleteCustomer(customer: any): void {
     if (confirm(`¿Seguro que deseas eliminar a ${customer.name}?`)) {
-      this.customers = this.customers.filter(c => c !== customer);
-      console.log("Cliente eliminado:", customer);
+      this.customerService.deleteCustomer(customer.customerId).subscribe({
+        next: () => {
+          this.customers = this.customers.filter(c => c.customerId !== customer.customerId);
+          console.log("Cliente eliminado:", customer);
+        },
+        error: (err) => {
+          console.error('Error al eliminar cliente:', err);
+        }
+      });
     }
   }
+
 }

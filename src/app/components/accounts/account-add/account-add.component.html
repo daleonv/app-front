@@ -1,0 +1,30 @@
+<h2>Agregar Cuenta</h2>
+
+<form (ngSubmit)="addAccount()" class="account-form">
+  <label>Número de Cuenta:</label>
+  <input type="text" [(ngModel)]="account.accountNumber" name="accountNumber" required>
+
+  <label>Tipo de Cuenta:</label>
+  <select [(ngModel)]="account.accountType" name="accountType" required>
+    <option value="Ahorros">Ahorros</option>
+    <option value="Corriente">Corriente</option>
+  </select>
+
+  <label>Saldo Inicial:</label>
+  <input type="number" [(ngModel)]="account.initialBalance" name="initialBalance" required>
+
+  <label>Estado:</label>
+  <input type="text" [(ngModel)]="account.status" name="status" value="Activo" required readonly>
+
+  <label>Cliente:</label>
+  <select [(ngModel)]="account.customerId" name="customerId" required>
+    <option *ngFor="let customer of customers" [value]="customer.customerId">
+      {{ customer.name }}
+    </option>
+  </select>
+
+  <div class="form-buttons">
+    <button type="submit">Guardar</button>
+    <button type="button" (click)="cancel()">Cancelar</button>
+  </div>
+</form>
