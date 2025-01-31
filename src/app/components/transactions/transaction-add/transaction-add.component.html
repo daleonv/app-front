@@ -1,0 +1,28 @@
+<h2>Agregar Transacción</h2>
+
+<form (ngSubmit)="addTransaction()" class="transaction-form">
+
+    <label>Tipo de Transacción:</label>
+    <select [(ngModel)]="transaction.transactionType" name="transactionType" required>
+        <option value="Deposito">Depósito</option>
+        <option value="Retiro">Retiro</option>
+    </select>
+
+    <label>Monto:</label>
+    <input type="number" [(ngModel)]="transaction.amount" name="amount" required>
+
+    <label>Cuenta:</label>
+    <select [(ngModel)]="transaction.accountId" name="accountId" required>
+        <option *ngFor="let account of accounts" [value]="account.accountId">
+            {{ account.accountNumber }} - {{ account.accountType }}
+        </option>
+    </select>
+
+    <label>Estado:</label>
+    <input type="text" [(ngModel)]="transaction.status" name="status" value="Activo" required readonly>
+
+    <div class="form-buttons">
+        <button type="submit">Guardar</button>
+        <button type="button" (click)="cancel()">Cancelar</button>
+    </div>
+</form>

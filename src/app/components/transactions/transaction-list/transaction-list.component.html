@@ -1,0 +1,22 @@
+<h2>Lista de Movimientos</h2>
+<button (click)="goToAddTransaction()">Agregar Movimiento</button>
+<table class="transaction-table">
+  <thead>
+    <tr>
+      <th>Número de Cuenta</th>
+      <th>Tipo de Cuenta</th>
+      <th>Saldo Inicial</th>
+      <th>Estado</th>
+      <th>Tipo de Transacción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let transaction of transactions">
+      <td>{{ transaction.account.accountNumber }}</td>
+      <td>{{ transaction.account.accountType }}</td>
+      <td>{{ transaction.account.initialBalance }}</td>
+      <td>{{ transaction.status }}</td>
+      <td>{{ transaction.transactionType }} de {{ transaction.amount }}</td>
+    </tr>
+  </tbody>
+</table>
