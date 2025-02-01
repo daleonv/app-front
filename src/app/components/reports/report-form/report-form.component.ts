@@ -16,7 +16,8 @@ export class ReportFormComponent implements OnInit {
   report = {
     initialDate: '',
     endDate: '',
-    customerId: null
+    customerId: null,
+    extension: 'pdf'
   };
 
   customers: any[] = [];
@@ -77,27 +78,36 @@ export class ReportFormComponent implements OnInit {
   }
 
   downloadReport(): void {
-    if (this.reportData.length === 0) {
-      console.warn("No hay datos para exportar.");
+    if (!this.report.initialDate || !this.report.endDate || !this.report.customerId) {
+      alert('Por favor, complete todos los campos.');
       return;
     }
 
-    const headers = "Fecha,Cliente,Número de Cuenta,Tipo de Cuenta,Saldo Inicial,Estado,Tipo de Transacción,Monto,Saldo Final\n";
+    const requestData = {
+      initialDate: `${this.report.initialDate}T00:00:00Z`,
+      endDate: `${this.report.endDate}T23:59:59Z`,
+      customerId: this.report.customerId,
+      extension: this.report.extension
+    };
 
-    const csvRows = this.reportData.map(transaction =>
-      `${transaction.date.split("T")[0]},${transaction.name},${transaction.accountNumber},${transaction.accountType},${transaction.initialBalance},${transaction.status},${transaction.transactionType},${transaction.amount},${transaction.balance}`
-    );
+    this.reportService.downloadReport(requestData).subscribe({
+      next: (response) => {
+        const fileType = requestData.extension === 'pdf' ? 'application/pdf' : 'text/csv';
+        const blob = new Blob([response], { type: fileType });
+        const url = window.URL.createObjectURL(blob);
 
-    const csvContent = headers + csvRows.join("\n");
-    const blob = new Blob([csvContent], { type: "text/csv" });
-    const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `reporte.${requestData.extension}`;
+        a.click();
 
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "reporte.csv";
-    a.click();
-
-    window.URL.revokeObjectURL(url);
+        window.URL.revokeObjectURL(url);
+      },
+      error: (err) => {
+        console.error('Error al descargar el reporte:', err);
+        alert('Error al descargar el reporte. Inténtelo de nuevo.');
+      }
+    });
   }
 
 }
